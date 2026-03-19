@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no"
+  />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Plywood Load App" />
+
+  <title>Plywood Load App</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1>Plywood Load App</h1>
+      <p>Tính CBM, PCS/CBM và tối ưu đóng container 40ftHQ</p>
+    </header>
+
+    <main class="content">
+      <section class="card">
+        <h2>Input</h2>
+
+        <div class="form-grid">
+          <label class="field">
+            <span>Thickness (mm)</span>
+            <input type="number" id="thickness" inputmode="decimal" step="0.1" placeholder="Ví dụ: 17" />
+          </label>
+
+          <label class="field">
+            <span>Width (mm)</span>
+            <input type="number" id="width" inputmode="decimal" step="1" placeholder="Ví dụ: 1220" />
+          </label>
+
+          <label class="field">
+            <span>Length (mm)</span>
+            <input type="number" id="length" inputmode="decimal" step="1" placeholder="Ví dụ: 2440" />
+          </label>
+
+          <label class="field">
+            <span>Trọng lượng riêng ước tính (kg/cbm)</span>
+            <input type="number" id="density" inputmode="decimal" step="1" value="620" />
+          </label>
+
+          <label class="field">
+            <span>Khoảng số tấm/kiện muốn xét</span>
+            <div class="double-input">
+              <input type="number" id="pcsMin" inputmode="numeric" step="1" value="30" />
+              <input type="number" id="pcsMax" inputmode="numeric" step="1" value="100" />
+            </div>
+          </label>
+        </div>
+
+        <button id="calcBtn" class="btn">Tính ngay</button>
+      </section>
+
+      <section class="card">
+        <h2>Output</h2>
+
+        <div class="result-grid">
+          <div class="result-box">
+            <span class="label">CBM / PCS</span>
+            <strong id="cbmPerPcs">-</strong>
+          </div>
+
+          <div class="result-box">
+            <span class="label">PCS / CBM</span>
+            <strong id="pcsPerCbm">-</strong>
+          </div>
+
+          <div class="result-box">
+            <span class="label">Gợi ý tốt nhất</span>
+            <strong id="bestSuggestion">-</strong>
+          </div>
+
+          <div class="result-box">
+            <span class="label">CBM ước tính / công</span>
+            <strong id="bestCbm">-</strong>
+          </div>
+
+          <div class="result-box">
+            <span class="label">Tổng tấn / công</span>
+            <strong id="bestTons">-</strong>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Pcs/kiện</th>
+                <th>Kiện/40HQ</th>
+                <th>Total PCS</th>
+                <th>CBM</th>
+                <th>Tấn</th>
+                <th>Đánh giá</th>
+              </tr>
+            </thead>
+            <tbody id="resultTable">
+              <tr>
+                <td colspan="6" class="empty">Chưa có dữ liệu</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
